@@ -79,16 +79,16 @@
                 <Label HorizontalAlignment="Center">d</Label>
             </Grid>
             <Grid Column="4">
-                <Label HorizontalAlignment="Center">d</Label>
-            </Grid>
-            <Grid Column="5">
                 <Label HorizontalAlignment="Center">e</Label>
             </Grid>
+            <Grid Column="5">
+                <Label HorizontalAlignment="Center">f</Label>
+            </Grid>
             <Grid Column="6">
-                <Label HorizontalAlignment="Center">h</Label>
+                <Label HorizontalAlignment="Center">g</Label>
             </Grid>
             <Grid Column="7">
-                <Label HorizontalAlignment="Center">g</Label>
+                <Label HorizontalAlignment="Center">h</Label>
             </Grid>
         </Grid>
 

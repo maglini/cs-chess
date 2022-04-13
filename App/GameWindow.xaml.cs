@@ -48,8 +48,8 @@ public partial class GameWindow : Window
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 Foreground = figure.MyColorType == ColorType.White
-                    ? Application.Current.Resources["LightFigureColor"] as SolidColorBrush
-                    : Application.Current.Resources["DarkFigureColor"] as SolidColorBrush
+                    ? Application.Current.Resources["WhiteFigureColor"] as SolidColorBrush
+                    : Application.Current.Resources["BlackFigureColor"] as SolidColorBrush
             });
 
         }
