@@ -8,4 +8,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Logic.Implementation\Logic.Implementation.csproj" />
+    <ProjectReference Include="..\Logic.Infrastructure\Logic.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

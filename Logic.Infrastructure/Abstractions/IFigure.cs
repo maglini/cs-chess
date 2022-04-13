@@ -7,4 +7,5 @@ public interface IFigure
 {
     IEnumerable<Point> GetSteps();
     IEnumerable<Point> GetStepsGradually();
+
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Logic.Implementation.Figures;
 using Logic.Infrastructure.Abstractions;
 using Logic.Infrastructure.Basis;
@@ -9,34 +11,52 @@ namespace Logic.Implementation;
 public class Board
 {
     private const short BoardSize = 8;
-    private const short MaxAmountFigures = 32;
 
-    public IList<Point> Points { get; protected set; } = new List<Point>(BoardSize * BoardSize);
-    public IList<Figure> Figures { get; protected set; } = new List<Figure>(MaxAmountFigures);
+    public IList<Cell> Cells { get; protected set; }
 
     public Board(GameOptions gameOptions)
     {
-        SetPoints();
-        SetFigures(ColorType.White, gameOptions.WhitePlayerDirectionType);
-        SetFigures(ColorType.Black, gameOptions.BlackPlayerDirectionType);
+        Cells = SetCells(gameOptions);
     }
 
-    private void SetPoints()
+    protected IList<Cell> SetCells(GameOptions gameOptions)
     {
+        IList<Cell> cells = new List<Cell>(BoardSize * BoardSize);
+
+        IEnumerable<Figure> boardFigures = 
+            SetFigures(ColorType.White, gameOptions.WhitePlayerDirectionType)
+            .Union(
+                SetFigures(ColorType.Black, gameOptions.BlackPlayerDirectionType));
+
+        foreach (Figure figure in boardFigures)
+        {
+            cells.Add(new Cell(figure.StartPosition, figure));
+        }
+
+        IList<Point> startFiguresPositions = boardFigures.Select(f => f.StartPosition).ToList();
+
         for (int y = 0; y < BoardSize; y++)
         {
             for (int x = 0; x < BoardSize; x++)
             {
-                Points.Add(new Point(x, y));
+                if ( !(startFiguresPositions.Any(p => y == p.Y) && startFiguresPositions.Any(p => x == p.X)) )
+                {
+                    cells.Add(new Cell(new Point(x,y), null));
+                }
             }
         }
+
+        
+        return cells;
     }
 
-    private void SetFigures(ColorType colorType, DirectionType directionType)
+    protected IList<Figure> SetFigures(ColorType colorType, DirectionType directionType)
     {
+        IList<Figure> figures = new List<Figure>();
+
         for (int count = 1; count <= GameContract.PlayerContact.CountKings; count++)
         {
-            Figures.Add(new King(
+            figures.Add(new King(
                 myColorType: colorType,
                 myDirectionType: directionType,
                 startPosition: GameContract.PlayerContact.GetStartPosition(directionType, FigureType.King)));
@@ -44,7 +64,7 @@ public class Board
 
         for (int count = 1; count <= GameContract.PlayerContact.CountQueens; count++)
         {
-            Figures.Add(new Queen(
+            figures.Add(new Queen(
                 myColorType: colorType,
                 myDirectionType: directionType,
                 startPosition: GameContract.PlayerContact.GetStartPosition(directionType, FigureType.Queen)));
@@ -52,7 +72,7 @@ public class Board
 
         for (int count = 1; count <= GameContract.PlayerContact.CountElephants; count++)
         {
-            Figures.Add(new Elephant(
+            figures.Add(new Elephant(
                 myColorType: colorType,
                 myDirectionType: directionType,
                 startPosition: GameContract.PlayerContact.GetStartPosition(directionType, FigureType.Elephant, figureNumber: count)));
@@ -60,7 +80,7 @@ public class Board
 
         for (int count = 1; count <= GameContract.PlayerContact.CountHorses; count++)
         {
-            Figures.Add(new Horse(
+            figures.Add(new Horse(
                 myColorType: colorType,
                 myDirectionType: directionType,
                 startPosition: GameContract.PlayerContact.GetStartPosition(directionType, FigureType.Horse, figureNumber: count)));
@@ -68,7 +88,7 @@ public class Board
 
         for (int count = 1; count <= GameContract.PlayerContact.CountRooks; count++)
         {
-            Figures.Add(new Rook(
+            figures.Add(new Rook(
                 myColorType: colorType,
                 myDirectionType: directionType,
                 startPosition: GameContract.PlayerContact.GetStartPosition(directionType, FigureType.Rook, figureNumber: count)));
@@ -76,10 +96,12 @@ public class Board
 
         for (int count = 1; count <= GameContract.PlayerContact.CountPawns; count++)
         {
-            Figures.Add(new Pawn(
+            figures.Add(new Pawn(
                 myColorType: colorType,
                 myDirectionType: directionType,
                 startPosition: GameContract.PlayerContact.GetStartPosition(directionType, FigureType.Pawn, figureNumber: count)));
         }
+
+        return figures;
     }
 }
