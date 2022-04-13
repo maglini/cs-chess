@@ -40,7 +40,7 @@ public partial class GameWindow : Window
                 .Cast<Grid>()
                 .First(c => Grid.GetRow(c) == figure.StartPosition.Y 
                          && Grid.GetColumn(c) == figure.StartPosition.X);
-
+            
             cellGrid.Children.Add(new Label()
             {
                 Content = FigureIcons.GetIcon(figure.FigureType),
@@ -48,9 +48,10 @@ public partial class GameWindow : Window
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 Foreground = figure.MyColorType == ColorType.White
-                    ? new SolidColorBrush(Color.FromRgb(255, 255, 255))
-                    : new SolidColorBrush(Color.FromRgb(0, 0, 0))
+                    ? Application.Current.Resources["LightFigureColor"] as SolidColorBrush
+                    : Application.Current.Resources["DarkFigureColor"] as SolidColorBrush
             });
+
         }
     }
 }

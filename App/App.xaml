@@ -4,10 +4,12 @@
              xmlns:local="clr-namespace:App"
              StartupUri="GameWindow.xaml">
     <Application.Resources>
-         <ResourceDictionary>
+        <ResourceDictionary x:Key="BreezeTheme">
             <SolidColorBrush x:Key="DeskColor" Color="#e9e2da"/>
             <SolidColorBrush x:Key="OddCellColor" Color="#8fbab7"/>
             <SolidColorBrush x:Key="EvenCellColor" Color="#edeef0"/>
+            <SolidColorBrush x:Key="DarkFigureColor" Color="#000000"/>
+            <SolidColorBrush x:Key="LightFigureColor" Color="#ffffff"/>
          </ResourceDictionary>
     </Application.Resources>
 </Application>

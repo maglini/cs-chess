@@ -14,7 +14,85 @@
                     Height="400"
                     Width="400"
                     VerticalAlignment="Center"/>-->
+      
+        <!--Numbers-->
+        <Grid Width="30" Height="500" Margin="0,0,530,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Row="0">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center">8</Label>
+            </Grid>
+            <Grid Row="1">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center">7</Label>
+            </Grid>
+            <Grid Row="2">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center">6</Label>
+            </Grid>
+            <Grid Row="3">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center">5</Label>
+            </Grid>
+            <Grid Row="4">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center">4</Label>
+            </Grid>
+            <Grid Row="5">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center">3</Label>
+            </Grid>
+            <Grid Row="6">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center">2</Label>
+            </Grid>
+            <Grid Row="7">
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center">1</Label>
+            </Grid>
+        </Grid>
 
+        <!--Letters-->
+        <Grid Height="30"
+              Width="500" Margin="0,530,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Column="0">
+                <Label HorizontalAlignment="Center">a</Label>
+            </Grid>
+            <Grid Column="1">
+                <Label HorizontalAlignment="Center">b</Label>
+            </Grid>
+            <Grid Column="2">
+                <Label HorizontalAlignment="Center">c</Label>
+            </Grid>
+            <Grid Column="3">
+                <Label HorizontalAlignment="Center">d</Label>
+            </Grid>
+            <Grid Column="4">
+                <Label HorizontalAlignment="Center">d</Label>
+            </Grid>
+            <Grid Column="5">
+                <Label HorizontalAlignment="Center">e</Label>
+            </Grid>
+            <Grid Column="6">
+                <Label HorizontalAlignment="Center">h</Label>
+            </Grid>
+            <Grid Column="7">
+                <Label HorizontalAlignment="Center">g</Label>
+            </Grid>
+        </Grid>
+
+        <!--Board-->
         <Grid Name="BoardGrid"
               Height="500"
               Width="500">
@@ -42,7 +120,7 @@
             </Grid.ColumnDefinitions>
 
             <!--Row 0-->
-            <Grid Row="0" Column="0" Background="{StaticResource OddCellColor}"/>
+            <Grid Row="0" Column="0" Background="{StaticResource OddCellColor}" />
             <Grid Row="0" Column="1" Background="{StaticResource EvenCellColor}" />
             <Grid Row="0" Column="2" Background="{StaticResource OddCellColor}" />
             <Grid Row="0" Column="3" Background="{StaticResource EvenCellColor}" />
@@ -122,5 +200,7 @@
             <Grid Row="7" Column="7" Background="{StaticResource OddCellColor}" />
 
         </Grid>
+
     </Grid>
+
 </Window>
