@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Logic.Infrastructure.Basis;
 
-public class Point
+public struct Point
 {
-    public int X { get; protected set; }
-    public int Y { get; protected set; }
+    public int X { get; private set; }
+    public int Y { get; private set; }
 
-    public int Number { get; protected set; }
-    public char Character { get; protected set; }
+    public int Number { get; private set; }
+    public char Character { get; private set; }
 
     private IList<char> _characters = new List<char> { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
     private IList<int> _numbers = new List<int> { 8, 7, 6, 5, 4, 3, 2, 1 };
