@@ -16,6 +16,7 @@ public abstract class Figure : IFigure
 
     public Point Position { get; protected set; }
     public Point StartPosition { get; protected set; }
+    public Point LastPosition { get; protected set; }
 
     protected Figure(
         FigureType figureType,
@@ -28,6 +29,7 @@ public abstract class Figure : IFigure
         MyDirectionType = myDirectionType;
         StartPosition = startPosition;
         Position = startPosition;
+        LastPosition = startPosition;
     }
 
     public abstract IEnumerable<Point> GetSteps();

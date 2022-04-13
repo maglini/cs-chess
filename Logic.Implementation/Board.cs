@@ -45,7 +45,6 @@ public class Board
                 }
             }
         }
-
         
         return cells;
     }
