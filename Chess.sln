@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "App\App.csproj", "{594C6E42-BF1D-443A-AA56-882A9AC39881}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "App\UI.csproj", "{594C6E42-BF1D-443A-AA56-882A9AC39881}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1", "1", "{CCF824AE-D795-4FA6-94B2-B3596EE337A9}"
 EndProject
@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2", "2", "{08704824-279C-42
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3", "3", "{E1E89667-9483-4F1A-A3A8-1D5A1932964D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic.Infrastructure", "Logic.Infrastructure\Logic.Infrastructure.csproj", "{38A01EE0-6D84-4B0B-9406-E5456E988662}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic.Infrastructure", "Logic.Infrastructure\Logic.Infrastructure.csproj", "{38A01EE0-6D84-4B0B-9406-E5456E988662}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic.Implementation", "Logic.Implementation\Logic.Implementation.csproj", "{319CCA56-3706-4A09-931E-10CAD2CA5C26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic.Implementation", "Logic.Implementation\Logic.Implementation.csproj", "{319CCA56-3706-4A09-931E-10CAD2CA5C26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

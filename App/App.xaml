@@ -1,9 +1,13 @@
-﻿<Application x:Class="App.App"
+﻿<Application x:Class="UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:App"
              StartupUri="GameWindow.xaml">
     <Application.Resources>
-         
+         <ResourceDictionary>
+            <SolidColorBrush x:Key="DeskColor" Color="#e9e2da"/>
+            <SolidColorBrush x:Key="OddCellColor" Color="#8fbab7"/>
+            <SolidColorBrush x:Key="EvenCellColor" Color="#edeef0"/>
+         </ResourceDictionary>
     </Application.Resources>
 </Application>

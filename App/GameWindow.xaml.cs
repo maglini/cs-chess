@@ -1,6 +1,14 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using Logic.Implementation;
+using Logic.Infrastructure.Abstractions;
 using Logic.Infrastructure.Basis;
+using Logic.Infrastructure.EnumTypes;
+using UI;
+using UI.Common;
 
 namespace App;
 
@@ -9,14 +17,41 @@ namespace App;
 /// </summary>
 public partial class GameWindow : Window
 {
+    protected Board Board { get; private set; }
+
     public GameWindow()
     {
-        Board board = new Board(new GameOptions());
-        //this.f.Children.Add(new Grid()
-        //{
-        //    Name = "Board", Background = new SolidColorBrush(ColorType.FromRgb(21,0,0)), Width = 500, Height = 500,
-        //});
         InitializeComponent();
+        InitializeBoard();
+    }
+
+    protected void InitializeBoard()
+    {
+        this.Board = new Board(new GameOptions());
+
+        List<Figure> figures = Board.Cells
+            .Select(c => c.Figure)
+            .Where(f => f != null)
+            .ToList();
+
+        foreach (Figure figure in figures)
+        {
+            Grid cellGrid = BoardGrid.Children
+                .Cast<Grid>()
+                .First(c => Grid.GetRow(c) == figure.StartPosition.Y 
+                         && Grid.GetColumn(c) == figure.StartPosition.X);
+
+            cellGrid.Children.Add(new Label()
+            {
+                Content = FigureIcons.GetIcon(figure.FigureType),
+                FontSize = figure.FigureType == FigureType.Pawn ? 25.0 : 38.0,
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Foreground = figure.MyColorType == ColorType.White
+                    ? new SolidColorBrush(Color.FromRgb(255, 255, 255))
+                    : new SolidColorBrush(Color.FromRgb(0, 0, 0))
+            });
+        }
     }
 }
 
