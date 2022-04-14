@@ -34,10 +34,13 @@ public partial class GameWindow : Window
             .Where(f => f != null)
             .ToList();
 
+        IEnumerable<Grid> cellsGrids = BoardGrid.Children
+            .Cast<Grid>()
+            .ToList();
+
         foreach (Figure figure in figures)
         {
-            Grid cellGrid = BoardGrid.Children
-                .Cast<Grid>()
+            Grid cellGrid = cellsGrids
                 .First(c => Grid.GetRow(c) == figure.StartPosition.Y 
                          && Grid.GetColumn(c) == figure.StartPosition.X);
             
@@ -51,7 +54,6 @@ public partial class GameWindow : Window
                     ? Application.Current.Resources["WhiteFigureColor"] as SolidColorBrush
                     : Application.Current.Resources["BlackFigureColor"] as SolidColorBrush
             });
-
         }
     }
 }

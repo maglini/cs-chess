@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Logic.Implementation.Extensions;
 using Logic.Implementation.Figures;
 using Logic.Infrastructure.Abstractions;
 using Logic.Infrastructure.Basis;
@@ -39,7 +40,7 @@ public class Board
         {
             for (int x = 0; x < BoardSize; x++)
             {
-                if ( !(startFiguresPositions.Any(p => y == p.Y) && startFiguresPositions.Any(p => x == p.X)) )
+                if (!startFiguresPositions.Exists(y,x))
                 {
                     cells.Add(new Cell(new Point(x,y), null));
                 }
